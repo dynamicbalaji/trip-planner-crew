@@ -3,5 +3,13 @@
 # environment variables
 .env
 
-#Cache folders
+# Cache folders
 __pycache__/
+
+# Virtual environment
+/muruganenv
+
+# Dependencies
+./poetry.exe
+poetry.exe
+poetry.lock
