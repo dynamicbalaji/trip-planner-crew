@@ -43,11 +43,7 @@ Key Steps for Task Creation:
 
 """
 
-
-# This is an example of how to define custom tasks.
-# You can define as many tasks as you want.
-# You can also define custom agents in agents.py
-class TravelTasks:
+class TripTasks:
     def __tip_section(self):
         return "If you do your BEST WORK, I'll give you a $10,000 commission!"
 
