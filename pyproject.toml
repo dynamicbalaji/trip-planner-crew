@@ -11,8 +11,8 @@ crewai = "0.1.24"
 unstructured = "==0.10.25"
 # library to fetch weather data from open weather map(OWM)
 pyowm = "3.3.0"
-tools = "^0.1.9"
 python-dotenv = "1.0.0"
+langchain-openai = "^0.0.5"
 
 # Check python code for type errors
 [tool.pyright]
