@@ -1,7 +1,9 @@
 from crewai import Agent
 from textwrap import dedent
-from langchain.llms import OpenAI, Ollama
 from langchain_openai import ChatOpenAI
+
+from tools.calculator_tools import CalculatorTools
+from tools.search_tools import SearchTools
 
 """
 Creating Agents Cheat Sheet:
@@ -34,7 +36,6 @@ class TripAgents:
     def __init__(self):
         self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
         self.OpenAIGPT4 = ChatOpenAI(model_name="gpt-4", temperature=0.7)
-        self.Ollama = Ollama(model="openhermes")
 
     def expert_travel_agent(self):
         return Agent(
@@ -46,7 +47,7 @@ class TripAgents:
             backstory=dedent(
                 f"""Expert in travel planning and logistics. 
                 I have decades of expereince making travel iteneraries."""),
-            # tools=[tool_1, tool_2],
+            tools=[SearchTools.search_internet, CalculatorTools.calculate],
             verbose=True,
             llm=self.OpenAIGPT35,
         )
@@ -58,7 +59,7 @@ class TripAgents:
                 f"""Select the best cities based on weather, season, prices, and traveler interests"""),
             backstory=dedent(
                 f"""Expert at analyzing travel data to pick ideal destinations"""),
-            # tools=[tool_1, tool_2],
+            tools=[SearchTools.search_internet],
             verbose=True,
             llm=self.OpenAIGPT35,
         )
@@ -70,7 +71,7 @@ class TripAgents:
                 f"""Provide the BEST insights about the selected city"""),
             backstory=dedent(f"""Knowledgeable local guide with extensive information
         about the city, it's attractions and customs"""),
-            # tools=[tool_1, tool_2],
+            tools=[SearchTools.search_internet],
             verbose=True,
             llm=self.OpenAIGPT35,
         )
