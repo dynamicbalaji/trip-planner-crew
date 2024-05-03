@@ -1,4 +1,3 @@
-import os
 from crewai import Crew
 from textwrap import dedent
 from dotenv import load_dotenv
